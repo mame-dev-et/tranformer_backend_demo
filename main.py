@@ -36,6 +36,11 @@ class TransformerInput(BaseModel):
     Polarization_Index: float
     DDF: float
 
+class ChatRequest(BaseModel):
+    question: str
+    status: str
+    inputs: dict
+
 # ==========================================
 # ROOT ENDPOINT
 # ==========================================
@@ -77,5 +82,20 @@ def predict(data: TransformerInput):
 
     return {
         "prediction": int(prediction),
-        "status": status_map[prediction]
+        "status": status_map[prediction],
+        "inputs": {
+            "BDV": data.BDV,
+            "Tan_Delta": data.Tan_Delta,
+            "Insulation_Resistance": data.Insulation_Resistance,
+            "Capacitance_Variation": data.Capacitance_Variation,
+            "Polarization_Index": data.Polarization_Index,
+            "DDF": data.DDF
+        }
+    }
+
+@app.post("/chat")
+def chat(data: ChatRequest):
+
+    return {
+        "message": "Chat endpoint works"
     }
