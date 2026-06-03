@@ -6,12 +6,10 @@ It does 2 jobs:
 - Predicts transformer health from test values
 - Answers chat questions using transformer documents (RAG)
 
-If you are not technical, follow the steps exactly in order.
+follow the steps exactly in order.
 
 ## What you need first
 
-- A Windows computer
-- Internet connection (for first setup)
 - Python installed (recommended: Python 3.10 or newer)
 - A Google AI API key (only needed for the chat feature)
 
@@ -19,9 +17,6 @@ If you are not technical, follow the steps exactly in order.
 
 Open VS Code Terminal and go to this backend folder:
 
-```bash
-cd C:/Users/user/Music/transformer_health_monitor/transformer_ai_backend
-```
 
 ## Step 2: Install Python packages (first time only)
 
