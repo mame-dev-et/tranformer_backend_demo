@@ -3,6 +3,7 @@ from pydantic import BaseModel
 import numpy as np
 import joblib
 from fastapi.middleware.cors import CORSMiddleware
+from rag.chatbot import ask_rag
 
 
 
@@ -96,6 +97,8 @@ def predict(data: TransformerInput):
 @app.post("/chat")
 def chat(data: ChatRequest):
 
+    answer = ask_rag(data.question)
+
     return {
-        "message": "Chat endpoint works"
+        "answer": answer
     }

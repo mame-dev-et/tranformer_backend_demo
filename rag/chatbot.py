@@ -5,13 +5,20 @@ from langchain_chroma import Chroma
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.prompts import PromptTemplate
 from dotenv import load_dotenv
+from pathlib import Path
 import os
 
 load_dotenv()
 
 # Load PDFs
-loader1 = PyPDFLoader("data/RAG_TRANSFORMER1.pdf")
-loader2 = PyPDFLoader("data/RAG_TRANSFORMER2.pdf")
+
+BASE_DIR = Path(__file__).resolve().parent
+
+pdf1 = BASE_DIR / "data" / "RAG_TRANSFORMER1.pdf"
+pdf2 = BASE_DIR / "data" / "RAG_TRANSFORMER2.pdf"
+
+loader1 = PyPDFLoader(str(pdf1))
+loader2 = PyPDFLoader(str(pdf2))
 
 documents = loader1.load() + loader2.load()
 
